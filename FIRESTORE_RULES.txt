@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Secara lalai (default), sekat semua akses baca/tulis
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Benarkan sesiapa sahaja membaca koleksi attendances & leaves 
+    // Ini diperlukan oleh 'Company Pulse' di Admin Dashboard
+    match /attendances/{attendanceId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /leaves/{leaveId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Koleksi overtime dan flexi (jika perlukan akses read di frontend kelak)
+    match /overtime/{otId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /flexi/{flexiId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Data pengguna (users) sangat sensitif. Hanya boleh diakses oleh backend server (Service Account)
+    match /users/{userId} {
+      allow read, write: if false;
+    }
+  }
+}
