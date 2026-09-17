@@ -11,15 +11,24 @@ It features advanced Generative AI integrations via the Google Gemini API to ass
 
 ## 🚀 Key Features
 
-* **Attendance & Leave Management**: Real-time tracking of staff clock-ins/outs and leave applications synchronized via Firebase Firestore.
-* **AI-Powered Analytics (Gemini API)**:
-  * **Overtime Pattern Analysis**: Analyzes 90-day historical data to flag fatigue risks (e.g., shifts with under 8-hour gaps).
-  * **Leave Trend Insights**: Identifies seasonal leave patterns to aid resource planning.
-  * **Automated KPI Summaries**: Generates concise performance review summaries.
-  * **Flexi-credit Utilization**: Recommends optimal usage of staff flexi-credits.
-* **Resilient Architecture**: Built-in local PHP fallback logic ensures core admin functions remain accessible even during external API outages.
-* **Audit & Export**: Automated PDF generation for attendance and analytics records using DomPDF to meet compliance and audit requirements.
-* **Cross-Platform Sync**: Acts as the central admin portal, synchronizing data seamlessly with a partner-built Flutter mobile application.
+### 📅 Core HR Modules
+* **Real-time Attendance Tracking**: Monitors staff clock-ins and clock-outs seamlessly, ensuring accurate timekeeping synchronized instantly via Firebase Firestore.
+* **Comprehensive Leave Management**: Allows employees to submit leave requests while providing HR administrators with an intuitive dashboard to approve, reject, and track leave balances.
+* **Staff Directory & Task Assignment**: Centralized database for employee information and an integrated system for assigning and tracking daily operational tasks.
+
+### 🧠 AI-Powered Analytics (Powered by Google Gemini API)
+* **Overtime & Fatigue Pattern Analysis**: Intelligently analyzes 90-day historical overtime data to identify fatigue risks, specifically flagging consecutive shifts with under 8-hour rest gaps to ensure employee well-being.
+* **Predictive Leave Trend Insights**: Uses historical data to identify seasonal leave patterns, helping management proactively plan resource allocation during peak absence periods.
+* **Automated KPI Review Summaries**: Consolidates employee performance metrics into concise, easy-to-read qualitative summaries for rapid performance reviews.
+* **Flexi-credit Utilization Engine**: Analyzes employee benefit usage to recommend optimal utilization of staff flexi-credits.
+
+### 🛡️ System Architecture & Reliability
+* **Serverless Backend**: Utilizes Google Cloud Firestore as a scalable, real-time NoSQL backend to guarantee lightning-fast data retrieval across platforms.
+* **Resilient Fallback Mechanism**: Features custom local PHP fallback logic that ensures core HR admin functions (like basic attendance and leave tracking) remain fully operational even if the external AI APIs experience downtime.
+* **Cross-Platform Synchronization**: Serves as the central command portal (built in Laravel) that syncs data bidirectionally with a partner-developed Flutter mobile application for staff on-the-go.
+
+### 📊 Reporting & Compliance
+* **Automated PDF Exporting**: Integrates DomPDF to generate official, formatted PDF reports for monthly attendance, leave records, and AI analytics to meet company audit requirements.
 
 ## 🛠️ Tech Stack
 
