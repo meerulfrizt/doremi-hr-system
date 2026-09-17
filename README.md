@@ -1,59 +1,82 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Attendance Tracking System DOREMI
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 
-## About Laravel
+A dual-platform HR administration and management system developed for Doremi Services & Rental Sdn. Bhd. This system streamlines attendance tracking, leave management, and staff directories through a powerful Laravel web portal, backed by a serverless Google Cloud Firestore database.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+It features advanced Generative AI integrations via the Google Gemini API to assist HR administrators with intelligent insights and decision-making.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Key Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Attendance & Leave Management**: Real-time tracking of staff clock-ins/outs and leave applications synchronized via Firebase Firestore.
+* **AI-Powered Analytics (Gemini API)**:
+  * **Overtime Pattern Analysis**: Analyzes 90-day historical data to flag fatigue risks (e.g., shifts with under 8-hour gaps).
+  * **Leave Trend Insights**: Identifies seasonal leave patterns to aid resource planning.
+  * **Automated KPI Summaries**: Generates concise performance review summaries.
+  * **Flexi-credit Utilization**: Recommends optimal usage of staff flexi-credits.
+* **Resilient Architecture**: Built-in local PHP fallback logic ensures core admin functions remain accessible even during external API outages.
+* **Audit & Export**: Automated PDF generation for attendance and analytics records using DomPDF to meet compliance and audit requirements.
+* **Cross-Platform Sync**: Acts as the central admin portal, synchronizing data seamlessly with a partner-built Flutter mobile application.
 
-## Learning Laravel
+## 🛠️ Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+* **Framework:** Laravel 12 (PHP 8.2+)
+* **Database:** Google Cloud Firestore (NoSQL) via `kreait/laravel-firebase`
+* **AI Integration:** Google Gemini API
+* **Frontend:** Blade Templates, JavaScript, HTML, CSS, Tailwind CSS (via Laravel Breeze)
+* **Testing:** Pest PHP
+* **Utilities:** DomPDF for report generation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ⚙️ Installation & Setup
 
-## Laravel Sponsors
+If you wish to run this project locally, follow these steps:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/doremi-hr-system.git
+   cd doremi-hr-system
+   ```
 
-### Premium Partners
+2. **Install PHP Dependencies**
+   ```bash
+   composer install
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+3. **Install NPM Dependencies**
+   ```bash
+   npm install
+   npm run build
+   ```
 
-## Contributing
+4. **Environment Setup**
+   Copy the example environment file and generate an application key:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. **Firebase / Firestore Configuration**
+   You will need to add your Firebase credentials. Place your Firebase Service Account JSON file in the project and update the `.env` variables accordingly:
+   ```env
+   FIREBASE_CREDENTIALS=/path/to/your/firebase_credentials.json
+   FIREBASE_DATABASE_URL=https://your-project-id.firebaseio.com
+   ```
 
-## Code of Conduct
+6. **Gemini API Configuration**
+   Add your Gemini API key to the `.env` file:
+   ```env
+   GEMINI_API_KEY=your_api_key_here
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7. **Run the Development Server**
+   ```bash
+   php artisan serve
+   ```
+   Visit `http://localhost:8000` in your browser.
 
-## Security Vulnerabilities
+## 📄 License
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is proprietary software developed for Doremi Services & Rental Sdn. Bhd.
